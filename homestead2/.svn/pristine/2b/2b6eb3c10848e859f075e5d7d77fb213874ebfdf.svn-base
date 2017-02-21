@@ -1,0 +1,42 @@
+---
+ip: "192.168.1.x"
+memory: 512
+cpus: 1
+provider: virtualbox
+
+authorize: .ssh/id_rsa.pub
+
+keys:
+    - .ssh/id_rsa
+
+folders:
+    - map: /Path/To/The/WWW/Folder/On/Host/Machine
+      to: /home/vagrant/Code
+      type: nfs
+
+sites:
+    - map: homestead.app
+      to: /home/vagrant/Code
+
+#databases:
+#    - homestead
+
+#variables:
+#   - key: APP_ENV
+#    value: local
+
+# blackfire:
+#     - id: foo
+#       token: bar
+#       client-id: foo
+#       client-token: bar
+
+# ports:
+#     - send: 44300
+#       to: 443
+#     - send: 7777
+#       to: 777
+#       protocol: udp
+
+#networks:
+# - bridge: "en0: Ethernet"
