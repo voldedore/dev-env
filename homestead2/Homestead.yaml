@@ -1,9 +1,9 @@
 ---
 ip: "192.168.1.96"
-memory: 512
+memory: 786
 cpus: 1
 provider: virtualbox
-
+bridge: "en0: Ethernet" #Use for mac only
 authorize: .ssh/id_rsa.pub
 
 keys:
@@ -14,11 +14,13 @@ folders:
       to: /home/vagrant/Code
       type: nfs
 
-
 sites:
-    - map: homestead.app
-      to: /home/vagrant/Code
-
+    - map: mage.dev
+      to: /home/vagrant/Code/mkg170413
+      type: magento-wo-xdebug
+    - map: mage-debug.dev
+      to: /home/vagrant/Code/mkg170413
+      type: magento-w-xdebug
 #databases:
 #    - homestead
 

@@ -17,7 +17,7 @@ class Homestead
 
     # Configure A Private Network IP
     config.vm.network :private_network, ip: "192.168.10.10"
-    config.vm.network :public_network, ip: settings["ip"]#, bridge: "en0: Ethernet"
+    config.vm.network :public_network, ip: settings["ip"]
     # Configure Additional Networks
     if settings.has_key?("networks")
       settings["networks"].each do |network|
@@ -125,9 +125,10 @@ class Homestead
 			end
 			config.vm.synced_folder folder["map"], "/var/tmp/www", type: folder["type"], mount_options: mount_opts
       # -- this fixes the 501:dialout user/group mount
+      # config.bindfs.bind_folder "/var/tmp/www", folder["to"], perms: "u=rwx:g=r:o=r"
       config.bindfs.bind_folder "/var/tmp/www", folder["to"], perms: "u=rwx:g=r:o=r"
-      config.nfs.map_uid = Process.uid
-      config.nfs.map_gid = Process.gid
+      # config.nfs.map_uid = Process.uid
+      # config.nfs.map_gid = Process.gid
 	    end
     end
 
@@ -136,6 +137,11 @@ class Homestead
         s.path = scriptDir + "/clear-nginx.sh"
     end
 
+    # Start services
+    # config.vm.provision "shell" do |s|
+    #     s.inline = "sudo service nginx start"
+    #     s.args = [var["key"], var["value"]]
+    # end
 
     settings["sites"].each do |site|
       type = site["type"] ||= "laravel"
