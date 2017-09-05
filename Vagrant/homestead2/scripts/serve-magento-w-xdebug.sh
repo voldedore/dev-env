@@ -45,8 +45,8 @@ block="server {
         fastcgi_param SCRIPT_FILENAME \$document_root\$fastcgi_script_name;
         fastcgi_param PATH_INFO \$fastcgi_script_name;
         try_files \$uri =404;
-        fastcgi_send_timeout 300;
-        fastcgi_read_timeout 300;
+        fastcgi_send_timeout 36000;
+        fastcgi_read_timeout 36000;
     }
 
     location ~ /\.ht {

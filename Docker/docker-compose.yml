@@ -1,0 +1,37 @@
+version: "2"
+
+services:
+  nginx:
+    build:
+      context: ./build
+      dockerfile: nginx.dockerfile
+    container_name: dev.nginx
+    ports: 
+      - "8080:8080"
+      - "808:808"
+    links:
+      - php7
+    volumes_from:
+      - data
+  php7:
+    image: php:7.1-fpm-alpine
+    container_name: dev.php7
+    volumes_from:
+      - data
+  php5:
+    image: php:5.6-fpm-alpine
+    # build:
+    #   context: ./build
+    #   dockerfile: php5.dockerfile
+    container_name: dev.php5
+    volumes_from:
+      - data
+  # hhvm:
+    # build:
+    #   context: ./build
+    #   dockerfile: hhvm.dockerfile
+    # image: hhvm/hhvm:latest
+  data:
+    image: nginx:1.12-alpine
+    volumes:
+      - /Users/thevinh/www:/var/www/html:cached
