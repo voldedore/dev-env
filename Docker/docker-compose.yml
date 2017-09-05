@@ -7,23 +7,36 @@ services:
       dockerfile: nginx.dockerfile
     container_name: dev.nginx
     ports: 
-      - "8080:8080"
-      - "808:808"
+      - "7777:7777"
+      - "5555:5555"
     links:
       - php7
     volumes_from:
       - data
   php7:
-    image: php:7.1-fpm-alpine
+    build:
+      context: ./build
+      dockerfile: php7.dockerfile
     container_name: dev.php7
     volumes_from:
       - data
   php5:
-    image: php:5.6-fpm-alpine
-    # build:
-    #   context: ./build
-    #   dockerfile: php5.dockerfile
+    build:
+      context: ./build
+      dockerfile: php5.dockerfile
     container_name: dev.php5
+    volumes_from:
+      - data
+  db:
+    image: mariadb:latest
+    environment:
+      - MYSQL_ROOT_PASSWORD=password
+      - MYSQL_DATABASE=mkgdb
+      - MYSQL_USER=mkd
+      - MYSQL_PASSWORD=password
+    container_name: dev.db
+    ports:
+      - "3306:3306"
     volumes_from:
       - data
   # hhvm:

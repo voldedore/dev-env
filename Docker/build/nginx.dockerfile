@@ -4,4 +4,5 @@ FROM nginx:1.12-alpine
 
 ADD ./default.conf /etc/nginx/conf.d/
 
-EXPOSE 8080
+EXPOSE 7777
+EXPOSE 5555
