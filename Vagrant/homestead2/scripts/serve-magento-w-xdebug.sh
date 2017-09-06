@@ -8,7 +8,11 @@ block="server {
 
     charset utf-8;
 
-    location ~ ^/(app/|includes/|pkginfo/|var/|errors/local.xml|lib/|media/downloadable/) { deny all; }
+    # This is for FooMan Speedter
+    rewrite /skin/m/([0-9]+)(/.*\.(js|css)) /lib/minify/m.php?f=\$2&d=\$1 last;
+    location /lib/minify/ { allow all; }
+
+    location ~ ^/(app/|includes/|pkginfo/|var/|errors/local.xml|media/downloadable/) { deny all; }
     location ~ /\. { deny all; }
     location / {
         index  index.php index.html index.htm;
