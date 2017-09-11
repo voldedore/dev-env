@@ -6,7 +6,7 @@ services:
       context: ./build
       dockerfile: nginx.dockerfile
     container_name: dev.nginx
-    ports: 
+    ports:
       - "7777:7777"
       - "5555:5555"
     links:
@@ -28,7 +28,11 @@ services:
     volumes_from:
       - data
   db:
-    image: mariadb:latest
+    build:
+      context: .
+      dockerfile: build/mariadb.dockerfile
+      args:
+        - MYSQL_DATABASE_DUMP=magento_sample_data_for_1.9.1.0.sql
     environment:
       - MYSQL_ROOT_PASSWORD=password
       - MYSQL_DATABASE=mkgdb
@@ -47,4 +51,5 @@ services:
   data:
     image: nginx:1.12-alpine
     volumes:
-      - /Users/thevinh/www:/var/www/html:cached
+      - /home/thevinh/www:/var/www/html
+      - /var/lib/mysql
