@@ -10,19 +10,19 @@ Mainly used: homestead2 (based on laravel dev en), to dev magento.
 2. Installed vagrant
 3. Installed vagrant's extension bindfs
 
-  > vagrant plugin install vagrant-bindfs
+        vagrant plugin install vagrant-bindfs
 
 ### Instructions
 
 1. Clone the repo
 
-  > git clone https://github.com/voldedore/dev-env.git
+        git clone https://github.com/voldedore/dev-env.git
 
 2. Created ssh key inside Vagrant/homestead2/.ssh
 
-  > cd dev-env/Vagrant/homestead2
-  >
-  > ssh-keygen -t rsa -C "your@mail.com" -f .ssh/id_rsa
+        cd dev-env/Vagrant/homestead2
+
+        ssh-keygen -t rsa -C "your@mail.com" -f .ssh/id_rsa
 
 3. Edit the following info in the Homestead.yaml file
 
@@ -32,23 +32,23 @@ Mainly used: homestead2 (based on laravel dev en), to dev magento.
 
 4. Get things up
 
- > vagrant up
+        vagrant up
 
 ### Troubleshooting
 
 * Sometimes you may want to update the Ubuntu box, getting latest update of bindfs. To ssh to guest machine, do:
 
-  > vagrant ssh
+        vagrant ssh
 
   * Inside guest machine run:
 
-    > sudo apt-get update
-    >
-    > sudo apt-get install bindfs
+        sudo apt-get update
+
+        sudo apt-get install bindfs
 
   * Ctrl + D to return to host
 
-  > vagrant reload
+        vagrant reload
 
 ### Additional Info
 
