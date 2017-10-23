@@ -114,14 +114,14 @@ class Homestead
         #  mount_opts = folder["mount_opts"] ? folder["mount_opts"] : ['actimeo=1']
         #end
 
-        #config.vm.synced_folder folder["map"], folder["to"], type: folder["type"] ||= nil, mount_options: mount_opts	
-		
+        #config.vm.synced_folder folder["map"], folder["to"], type: folder["type"] ||= nil, mount_options: mount_opts
+
 		settings["folders"].sort! { |a,b| a["map"].length <=> b["map"].length }
 
 		settings["folders"].each do |folder|
 			mount_opts = folder["mount_opts"] ? folder["mount_opts"] : []
 			if (folder["type"] == "nfs")
-				mount_opts = ['nolock,vers=3,udp,noatime']
+				mount_opts = ['rw', 'vers=3', 'tcp', 'fsc' ,'actimeo=1']
 			end
 			config.vm.synced_folder folder["map"], "/var/tmp/www", type: folder["type"], mount_options: mount_opts
       # -- this fixes the 501:dialout user/group mount
