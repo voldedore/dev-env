@@ -2,6 +2,6 @@
 
 Lưu trữ các thông số tạo dựng môi trường dev (web) trên nền tảng vagrant và docker.
 
-Last updated: Sept 5th, 2017
+Last updated: Jan 5th, 2018
 
 By thevinh@mkd
