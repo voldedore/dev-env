@@ -1,6 +1,6 @@
 ---
-ip: "192.168.1.96"
-memory: 786
+ip: "192.168.1.52"
+memory: 1024
 cpus: 1
 provider: virtualbox
 bridge: "en0: Ethernet" #Use for mac only
@@ -15,12 +15,19 @@ folders:
       type: nfs
 
 sites:
-    - map: mage.dev
-      to: /home/vagrant/Code/mkg170413
-      type: magento-wo-xdebug
-    - map: mage-debug.dev
-      to: /home/vagrant/Code/mkg170413
-      type: magento-w-xdebug
+    - map: vinh.mkd.vn
+      to: /home/vagrant/Code/mage-dev
+      port: 80
+      type: magento-vinhmkd
+    - map: mage.org
+      to: /home/vagrant/Code/mage-org
+      type: magento-original
+    # - map: mage-ctasca-es.dev
+    #   to: /home/vagrant/Code/mage-ctasca-es
+    #   type: magento-ctasca-es
+    # - map: vina-navi-es.dev
+    #   to: /home/vagrant/Code/mage-vina-es
+    #   type: magento-vnnv-es
 #databases:
 #    - homestead
 

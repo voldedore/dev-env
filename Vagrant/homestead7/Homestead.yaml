@@ -1,0 +1,45 @@
+---
+ip: "192.168.10.10"
+networks:
+  - type: public_network
+    ip: "192.168.1.51"
+    bridge: "en1: Wi-Fi (AirPort)"
+memory: 1024
+cpus: 1
+provider: virtualbox
+
+authorize: ~/.ssh/id_rsa.pub
+
+keys:
+    - ~/.ssh/id_rsa
+
+folders:
+    - map: ~/www
+      to: /home/vagrant/code
+      type: nfs
+
+sites:
+    - map: vinh.mkd.vn
+      to: /home/vagrant/code/mage-dev
+      php: "5.6"
+      type: magento
+    - map: mage.org
+      to: /home/vagrant/code/mage-org
+      php: "5.6"
+      type: magento
+
+databases:
+    - mkg
+
+# blackfire:
+#     - id: foo
+#       token: bar
+#       client-id: foo
+#       client-token: bar
+
+# ports:
+#     - send: 50000
+#       to: 5000
+#     - send: 7777
+#       to: 777
+#       protocol: udp

@@ -7,3 +7,5 @@
 #sh /vagrant/scripts/serve-magento-wo-xdebug.sh
 #sh /vagrant/scripts/serve-magento-w-xdebug.sh
 #sh /vagrant/scripts/ruby-installation.sh
+
+#sh /vagrant/scripts/n98-magerun-alias.sh

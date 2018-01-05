@@ -1,0 +1,4 @@
+/vendor
+/.vagrant
+phpunit.xml
+/Homestead.json
