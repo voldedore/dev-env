@@ -1,4 +1,4 @@
-version: "2"
+version: "3.1"
 
 services:
   nginx:
@@ -51,5 +51,5 @@ services:
   data:
     image: nginx:1.12-alpine
     volumes:
-      - /home/thevinh/www:/var/www/html
+      - /home/thevinh/www:/var/www/html:cached
       - /var/lib/mysql
